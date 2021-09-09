@@ -89,14 +89,14 @@
 								<label class="control-label" style="color: red" for="inputError"  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">
 									パスワードを入力してください
 								</label>
-								<input type="text" id="inputPassword" th:field="*{password}" class="form-control" placeholder="Password">
+								<input type="password" id="inputPassword" th:field="*{password}" class="form-control" placeholder="Password">
 							</div>
 							<div class="form-group">
 								<label for="inputConfirmationPassword">確認用パスワード:</label>
 								<label class="co ntrol-label" style="color: red" for="inputError" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">
 									確認用パスワードを入力してください
 								</label>
-								<input type="text" id="inputConfirmationPassword" th:field="*{confirmPassword}" class="form-control" placeholder="Confirmation Password">
+								<input type="password" id="inputConfirmationPassword" th:field="*{confirmPassword}" class="form-control" placeholder="Confirmation Password">
 							</div>
 							<div class="form-group">
 								<button type="submit" class="btn btn-primary">登録</button>
