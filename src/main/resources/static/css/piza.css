@@ -31,3 +31,12 @@ span#total-price {
 th{
 	text-align: center;
 }
+
+.box {
+	display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+	width: calc(25% - 22px);
+}
