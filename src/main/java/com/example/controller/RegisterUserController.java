@@ -69,6 +69,6 @@ public class RegisterUserController {
 		}
 		
 		registerUserService.insert(user);
-		return "login";
+		return "redirect:/user/toSignIn";
 	}
 }
