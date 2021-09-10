@@ -1,11 +1,14 @@
 package com.example.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.User;
 import com.example.form.LoginUserForm;
 import com.example.service.LoginUserService;
 
@@ -27,6 +30,9 @@ public class LoginUserController {
 		return new LoginUserForm();
 	}
 	
+	@Autowired
+	private HttpSession session;
+	
 	/**
 	 * ユーザーログイン画面を登録する.
 	 * 
@@ -46,7 +52,10 @@ public class LoginUserController {
 	@RequestMapping("/signIn")
 	public String singIn( LoginUserForm form, Model model ) {
 		
-		if( loginUserService.searchByEmailAndPassword(form.getEmail(), form.getPassword()) != null ) {
+		User user = loginUserService.searchByEmailAndPassword(form.getEmail(), form.getPassword());
+		
+		if( user != null ) {
+			session.setAttribute("user", user);
 			//後でitem_list_curryにredirectするような処理を書く
 			return "item_list_curry";
 		} else {
