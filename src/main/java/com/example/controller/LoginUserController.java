@@ -56,8 +56,7 @@ public class LoginUserController {
 		
 		if( user != null ) {
 			session.setAttribute("user", user);
-			//後でitem_list_curryにredirectするような処理を書く
-			return "item_list_curry";
+			return "redirect:/item/all";
 		} else {
 			model.addAttribute("errorMessage", "メールアドレス、またはパスワードが間違っています");
 			return toSignIn();

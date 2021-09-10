@@ -27,7 +27,6 @@ public class LogoutUserController {
 	@RequestMapping("/signOut")
 	public String signOut() {
 		session.invalidate();
-		//後で商品一覧画面にリダイレクトするような処理を書く
-		return "item_list_curry";
+		return "redirect:/item/all";
 	}
 }
