@@ -43,7 +43,7 @@ public class ShowItemService {
 			return itemRepository.findAll();
 		}
 		List<Item> itemList = itemRepository.findByLikeName(name);
-		if( itemList.size() == 0 ) {
+		if( itemList == null ) {
 			return null;
 		}
 		return itemList;
