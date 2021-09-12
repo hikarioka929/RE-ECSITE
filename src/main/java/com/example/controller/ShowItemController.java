@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Item;
-import com.example.service.ShowItemAllService;
+import com.example.service.ShowItemService;
 
 /**
  * 商品一覧表示を操作するコントローラ.
@@ -18,10 +18,10 @@ import com.example.service.ShowItemAllService;
  */
 @Controller
 @RequestMapping("/item")
-public class ShowItemAllController {
+public class ShowItemController {
 	
 	@Autowired
-	private ShowItemAllService showItemAllService;
+	private ShowItemService showItemService;
 	
 	/**
 	 * 商品一覧画面を表示する.
@@ -30,7 +30,20 @@ public class ShowItemAllController {
 	 */
 	@RequestMapping("/all")
 	public String showList(Model model) {
-		List<Item> itemList = showItemAllService.showList();
+		List<Item> itemList = showItemService.showList();
+		model.addAttribute("itemList", itemList);
+		return "item_list_curry";
+	}
+	
+	/**
+	 * 商品を曖昧検索する.
+	 * 
+	 * @param name 検索した名前
+	 * @return 検索結果
+	 */
+	@RequestMapping("/search")
+	public String searchByLikeName(String name, Model model) {
+		List<Item> itemList = showItemService.searchByLikeName(name);
 		model.addAttribute("itemList", itemList);
 		return "item_list_curry";
 	}

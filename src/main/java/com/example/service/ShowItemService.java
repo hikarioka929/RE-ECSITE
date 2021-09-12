@@ -17,7 +17,7 @@ import com.example.repository.ItemRepository;
  */
 @Service
 @Transactional
-public class ShowItemAllService {
+public class ShowItemService {
 
 	@Autowired
 	private ItemRepository itemRepository;
@@ -29,6 +29,23 @@ public class ShowItemAllService {
 	 */
 	public List<Item> showList() {
 		List<Item> itemList = itemRepository.findAll();
+		return itemList;
+	}
+	
+	/**
+	 * 商品を曖昧検索する.
+	 * 
+	 * @param name 検索した名前
+	 * @return 検索結果
+	 */
+	public List<Item> searchByLikeName(String name){
+		if( name == null ) {
+			return itemRepository.findAll();
+		}
+		List<Item> itemList = itemRepository.findByLikeName(name);
+		if( itemList.size() == 0 ) {
+			return null;
+		}
 		return itemList;
 	}
 }
