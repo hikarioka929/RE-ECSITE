@@ -78,11 +78,11 @@
 					<tbody class="box">
 						<tr th:each="item : ${itemList}">
 							<th>
-								<a href="item_detail.html">
+								<a href="item_detail.html" th:href="@{/item/?id=} + ${item.id}">
 									<img src="../static/img_curry/1.jpg" class="img-responsive img-rounded 
 									item-img-center" width="299" height="600" th:src="@{/img_curry/} + ${item.imagePath}">
 								</a><br>
-								<a href="item_detail.html" th:text="${item.name}">じゃがバターベーコン</a><br>
+								<a href="item_detail.html" th:href="@{/item/?id=} + ${item.id}" th:text="${item.name}">じゃがバターベーコン</a><br>
 								<span class="price">&nbsp;М&nbsp;</span>&nbsp;&nbsp;<span th:text="${item.priceM}"></span>円(税抜)<br>
 								<span class="price">&nbsp;Ｌ</span>&nbsp;&nbsp;<span th:text="${item.priceL}"></span>円(税抜)<br>
 							</th>

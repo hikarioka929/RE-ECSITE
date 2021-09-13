@@ -55,4 +55,17 @@ public class ItemRepository {
 		}
 		return itemList;
 	}
+	
+	/**
+	 * 商品をIDから取得する.
+	 * 
+	 * @param id 商品ID
+	 * @return 商品情報
+	 */
+	public Item findById(Integer id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT id, name, description, price_m, price_l, image_path, deleted FROM items WHERE id = :id;");
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
+		return template.queryForObject(sql.toString(), param, ITEM_ROW_MAPPER);
+	}
 }
