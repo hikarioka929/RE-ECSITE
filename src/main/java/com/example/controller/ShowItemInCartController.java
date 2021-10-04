@@ -48,6 +48,9 @@ public class ShowItemInCartController {
 				totalPrice += orderItem.getSubTotal();
 			}
 			order.setTotalPrice(totalPrice);
+			if (order.getTotalPrice() == 0) {
+				model.addAttribute("nullMessage", "カートに商品がありません");
+			}
 		}
 		model.addAttribute("order", order);
 		return "cart_list";
