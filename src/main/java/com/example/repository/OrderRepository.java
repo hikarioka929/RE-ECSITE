@@ -159,4 +159,16 @@ public class OrderRepository {
 
 		return order;
 	}
+
+	/**
+	 * 注文情報を削除する.
+	 * 
+	 * @param id 注文情報ID
+	 */
+	public void deleteById(Integer id) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("DELETE FROM orders WHERE id = :id;");
+		SqlParameterSource param = new MapSqlParameterSource().addValue("id", id);
+		template.update(sql.toString(), param);
+	}
 }
