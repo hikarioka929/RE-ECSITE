@@ -26,4 +26,14 @@ public class DeleteItemInCartService {
 
 	@Autowired
 	private OrderToppingRepository orderToppingRepository;
+
+	/**
+	 * 注文商品を削除する.
+	 * 
+	 * @param orderItemId 注文商品ID
+	 */
+	public void deleteByOrderItemId(Integer orderItemId) {
+		orderToppingRepository.deleteByOrderItemId(orderItemId);
+		orderItemRepository.deleteById(orderItemId);
+	}
 }
