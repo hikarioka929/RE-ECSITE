@@ -18,4 +18,16 @@ public class DeleteItemInCartController {
 
 	@Autowired
 	private DeleteItemInCartService deleteItemInCartService;
+
+	/**
+	 * カート内商品を削除する.
+	 * 
+	 * @param orderItemId 注文商品ID
+	 * @return カート内商品表示画面
+	 */
+	@RequestMapping("/delete")
+	public String delete(Integer orderItemId) {
+		deleteItemInCartService.deleteByOrderItemId(orderItemId);
+		return "redirect:/item/inCart";
+	}
 }
