@@ -9,7 +9,7 @@ import java.util.List;
  * 
  */
 public class OrderItem {
-	
+
 	/** ID */
 	private Integer id;
 	/** 商品ID */
@@ -80,19 +80,19 @@ public class OrderItem {
 	public void setOrderToppingList(List<OrderTopping> orderToppingList) {
 		this.orderToppingList = orderToppingList;
 	}
-	
+
 	public int getSubTotal() {
 		int itemPrice = 0;
 		int orderToppingPrice = 0;
-		if( size == 'M' ) {
+		if (size == 'M') {
 			itemPrice = item.getPriceM();
-			for( OrderTopping orderTopping : orderToppingList ) {
-				orderToppingPrice = orderTopping.getTopping().getPriceM();
+			for (OrderTopping orderTopping : orderToppingList) {
+				orderToppingPrice += orderTopping.getTopping().getPriceM();
 			}
-		} else if( size == 'L' ) {
+		} else if (size == 'L') {
 			itemPrice = item.getPriceL();
-			for( OrderTopping orderTopping : orderToppingList ) {
-				orderToppingPrice = orderTopping.getTopping().getPriceL();
+			for (OrderTopping orderTopping : orderToppingList) {
+				orderToppingPrice += orderTopping.getTopping().getPriceL();
 			}
 		}
 		return itemPrice + orderToppingPrice;

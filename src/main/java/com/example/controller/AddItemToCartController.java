@@ -47,7 +47,6 @@ public class AddItemToCartController {
 		} else {
 			addItemToCartService.add(form, 1, 0);
 		}
-		// 後でカート内一覧表示画面にリダイレクトするような処理を書く
-		return "cart_list";
+		return "redirect:/item/inCart";
 	}
 }
