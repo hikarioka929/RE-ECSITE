@@ -95,7 +95,7 @@ public class OrderItem {
 				orderToppingPrice += orderTopping.getTopping().getPriceL();
 			}
 		}
-		return itemPrice + orderToppingPrice;
+		return (itemPrice + orderToppingPrice) * quantity;
 	}
 
 	@Override
